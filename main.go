@@ -15,7 +15,7 @@ import (
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 	"github.com/tendermint/tendermint/privval"
 
-	"github.com/jdkanani/web3-example/contracts/rootchain"
+	"github.com/jdkanani/go-web3-example/contracts/rootchain"
 )
 
 var cdc = amino.NewCodec()

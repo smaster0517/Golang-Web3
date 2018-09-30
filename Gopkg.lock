@@ -221,10 +221,11 @@
   version = "v0.12.0"
 
 [[projects]]
-  digest = "1:20f0de5f25a3c2ac089b78d70f0dda23f32aa8675e6c79c69cd1a370886f1212"
+  digest = "1:2c958496fece3d9e53510a1b70d5f082242a29c49930a2d93bd5bfc278fc0a27"
   name = "github.com/tendermint/tendermint"
   packages = [
     "abci/types",
+    "config",
     "crypto",
     "crypto/ed25519",
     "crypto/encoding/amino",
@@ -393,6 +394,7 @@
     "github.com/ethereum/go-ethereum/ethclient",
     "github.com/ethereum/go-ethereum/event",
     "github.com/tendermint/go-amino",
+    "github.com/tendermint/tendermint/config",
     "github.com/tendermint/tendermint/crypto/secp256k1",
     "github.com/tendermint/tendermint/privval",
   ]
