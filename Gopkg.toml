@@ -28,3 +28,8 @@
 [prune]
   go-tests = true
   unused-packages = true
+
+[[constraint]]
+  name = "github.com/tendermint/tendermint"
+  source = "github.com/jdkanani/tendermint"
+  revision = "2e8b33b2dcae68679d0c05c65177fce45949006b"

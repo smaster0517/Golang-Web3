@@ -201,13 +201,6 @@
   revision = "ae2bd5eed72d46b28834ec3f60db3a3ebedd8dbd"
 
 [[projects]]
-  digest = "1:605b6546f3f43745695298ec2d342d3e952b6d91cdf9f349bea9315f677d759f"
-  name = "github.com/tendermint/btcd"
-  packages = ["btcec"]
-  pruneopts = "UT"
-  revision = "e5840949ff4fff0c56f9b6a541e22b63581ea9df"
-
-[[projects]]
   branch = "master"
   digest = "1:087aaa7920e5d0bf79586feb57ce01c35c830396ab4392798112e8aae8c47722"
   name = "github.com/tendermint/ed25519"
@@ -228,11 +221,10 @@
   version = "v0.12.0"
 
 [[projects]]
-  digest = "1:e05a336b1f299eb162467e9c3441f8f438a1e06c5bf4a892dd912770a5e6dde1"
+  digest = "1:20f0de5f25a3c2ac089b78d70f0dda23f32aa8675e6c79c69cd1a370886f1212"
   name = "github.com/tendermint/tendermint"
   packages = [
     "abci/types",
-    "config",
     "crypto",
     "crypto/ed25519",
     "crypto/encoding/amino",
@@ -252,8 +244,8 @@
     "types/time",
   ]
   pruneopts = "UT"
-  revision = "0c9c3292c918617624f6f3fbcd95eceade18bcd5"
-  version = "v0.25.0"
+  revision = "2e8b33b2dcae68679d0c05c65177fce45949006b"
+  source = "github.com/jdkanani/tendermint"
 
 [[projects]]
   branch = "master"
@@ -400,7 +392,7 @@
     "github.com/ethereum/go-ethereum/crypto",
     "github.com/ethereum/go-ethereum/ethclient",
     "github.com/ethereum/go-ethereum/event",
-    "github.com/tendermint/tendermint/config",
+    "github.com/tendermint/go-amino",
     "github.com/tendermint/tendermint/privval",
   ]
   solver-name = "gps-cdcl"

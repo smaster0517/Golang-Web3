@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
 	"log"
 	"math/big"
@@ -9,11 +10,14 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/tendermint/tendermint/config"
+	amino "github.com/tendermint/go-amino"
+	"github.com/tendermint/tendermint/crypto/secp256k1"
 	"github.com/tendermint/tendermint/privval"
 
 	"github.com/jdkanani/web3-example/contracts/rootchain"
 )
+
+var cdc = amino.NewCodec()
 
 func main() {
 	client, err := ethclient.Dial("https://kovan.infura.io")
@@ -35,8 +39,17 @@ func main() {
 	// private key
 	// priv := "117bbcf6bdc3a8e57f311a2b4f513c25b20e3ad4606486d7a927d8074872c2af"
 
-	privVal := privval.LoadFilePV(config.DefaultBaseConfig().PrivValidatorFile())
-	ecdsaPk, _ := crypto.ToECDSA(privVal.PrivKey.Bytes()[:])
+	// privVal := privval.LoadFilePV(config.DefaultBaseConfig().PrivValidatorFile())
+	privVal := privval.LoadFilePV("/Users/jdkanani/.tendermint/config/priv_validator.json")
+	pkBytes := privVal.PrivKey.Bytes()
+
+	fmt.Println(hex.EncodeToString(privVal.PubKey.Address()))
+	fmt.Println(hex.EncodeToString(pkBytes[len(pkBytes)-32:]))
+
+	ecdsaPk, err := crypto.ToECDSA(pkBytes[len(pkBytes)-32:])
+	if err != nil {
+		panic(err)
+	}
 	auth := bind.NewKeyedTransactor(ecdsaPk)
 
 	/**
@@ -51,4 +64,9 @@ func main() {
 
 	fmt.Printf("Pending TX: 0x%x\n", tx.Hash())
 
+}
+
+func h(value [32]byte) secp256k1.PrivKeySecp256k1 {
+	var sek secp256k1.PrivKeySecp256k1 = value
+	return sek
 }
